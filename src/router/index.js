@@ -11,6 +11,17 @@ import RightUser from '../components/users/right'
 import Registration from '../components/registration'
 import Restore from '../components/restore'
 import Activate from '../components/activate'
+import Home from '../components/learn/game/home'
+import unk from '../components/learn/unk'
+import forms from '../components/learn/forms'
+import trans from '../components/learn/trans'
+import vx from '../components/learn/vuex/vx'
+import inc from '../components/learn/axios/inc'
+import Welcome from '../components/learn/axios/comp/welcome'
+import DashboardPage from '../components//learn/axios/comp/dashboard'
+import SignupPage from '../components//learn/axios/comp/signup'
+import SigninPage from '../components/learn/axios/comp/signin'
+
 
 Vue.use(Router)
 
@@ -19,7 +30,7 @@ const ifNotAuthenticated = (to, from, next) => {
     next()
     return
   }
-  next('/login')
+  next('/') 
 }
 
 const ifAuthenticated = (to, from, next) => {
@@ -37,7 +48,7 @@ const check = (to, from, next) => {
   })
   .catch(error => {
     console.log('error: ', error)
-    next('/login')
+    next('/')
   })
   next()
 }
@@ -45,16 +56,46 @@ const check = (to, from, next) => {
 export default new Router({
   mode: 'history',
   routes: [
+    { path: '/welcome', component: Welcome },
+  { path: '/signup', component: SignupPage },
+  { path: '/signin', component: SigninPage },
+  { path: '/dashboard', component: DashboardPage },
+
     {
       path: '/',
       name: 'Home',
-      beforeEnter: check, ifAuthenticated,
+      component: Home,
+    },
+    {
+      path: '/22',
+      name: 'inc',
+      component: inc,
+    },
+    {
+      path: '/263',
+      name: 'vx',
+      component: vx,
+    },
+    {
+      path: '/191',
+      name: 'trans',
+      component: trans,
+    },
+    {
+      path: '/150',
+      name: 'forms',
+      component: forms,
+    },
+    {
+      path: '/8',
+      name: 'unk',
+      component: unk,
     },
     {
       path: '/login',
       name: 'Login',
       component: Login,
-      beforeEnter: check, ifNotAuthenticated,
+      beforeEnter: ifNotAuthenticated,
     },
     {
       path: '/users',

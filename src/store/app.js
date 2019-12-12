@@ -12,6 +12,7 @@ const getters = {
   roles: state => state.roles,
   permissions: state => state.permissions,
   userStatuses: state => state.userStatuses,
+  all: state => state.userStatuses + state.permissions,
 }
 const mutations = {
   setUsers: (state, users) => {
